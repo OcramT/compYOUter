@@ -20,7 +20,7 @@ Welcome to the compYOUter ReadMe!
 
 ## [Wireframes](https://github.com/OcramT/compYOUter/wiki/Wireframes)
 
-   * See wiki
+   ![](https://github.com/OcramT/compYOUter/blob/main/src/images/compYOUter_wireframe.png)
    
 ## [Architecture & Technology](https://github.com/OcramT/compYOUter/wiki/Architecture-&-Technology)
 
