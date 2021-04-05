@@ -17,6 +17,10 @@ Welcome to the compYOUter ReadMe!
 
    * Very basic graphics (I would love to incorporate rudimentary 3D graphics with three.js if I have time)
    * A soundtrack and sound effects
+
+## [Wireframes](https://github.com/OcramT/compYOUter/wiki/Wireframes)
+
+   * See wiki
    
 ## [Architecture & Technology](https://github.com/OcramT/compYOUter/wiki/Architecture-&-Technology)
 
