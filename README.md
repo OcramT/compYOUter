@@ -13,6 +13,18 @@ Welcome to the compYOUter ReadMe!
    * Use their webcam to engage with the application
    * Use their hands and/or body as controls to play a game
 
+### Game & Game Rules(subject to change):
+
+   * Theme will be a play on attack of the 50-ft woman movie
+   * Retro vibes/styling
+   * Simple, 2d objects (planes, missiles) will scroll across the screen
+   * Objects will enter at random heights from either the left or right
+   * The player's job will be to dodge each object by ducking
+   * *Potential Bonus Game Rules/Features*
+      * Certain objects will need to be batted away with the player's hands (bombs)
+      * Increasing the speed of objects as time progresses
+      * Tracking the user's score
+
 ### This project will include:
 
    * Very basic graphics (I would love to incorporate rudimentary 3D graphics with three.js if I have time)
