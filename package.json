@@ -2,7 +2,7 @@
   "name": "compyouter",
   "version": "1.0.0",
   "description": "",
-  "main": "compyouter.js",
+  "main": "index.js",
   "browserslist": [
     "last 1 version",
     "> 1%",
@@ -10,7 +10,6 @@
     "not dead"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "NODE_ENV=development webpack-dev-server --config webpack.dev.js ",
     "watch": "NODE_ENV=development webpack --watch --config webpack.dev.js ",
     "build": "NODE_ENV=production webpack --config webpack.prod.js"
@@ -18,12 +17,17 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.13.14",
     "@babel/core": "^7.13.14",
+    "@babel/node": "^7.13.13",
     "@babel/plugin-proposal-optional-chaining": "^7.13.12",
     "@babel/preset-env": "^7.13.12",
     "autoprefixer": "^10.2.5",
     "babel-loader": "^8.2.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-runtime": "^6.26.0",
     "css-loader": "^5.2.0",
+    "extract-loader": "^5.1.0",
     "fibers": "^5.0.0",
     "file-loader": "^6.2.0",
     "mini-css-extract-plugin": "^1.4.0",
@@ -41,6 +45,15 @@
   "dependencies": {
     "@tensorflow-models/posenet": "^2.2.2",
     "@tensorflow/tfjs": "^3.3.0",
-    "node-sass": "^4.14.1"
-  }
+    "babel-polyfill": "^6.26.0",
+    "i": "^0.3.6",
+    "node-sass": "^4.14.1",
+    "npm": "^7.8.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "type": "module"
 }
