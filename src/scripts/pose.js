@@ -1,12 +1,15 @@
 import * as posenet from '@tensorflow-models/posenet';
 import { setupVideo } from './video';
 import "babel-polyfill";
-
+import {dispose, disposeVariables, tidy} from '@tensorflow/tfjs'
 
 let videoElement = document.getElementById('video');
+
 const scaleFactor = 0.50;
 const flipHorizontal = true;
 const outputStride = 16;
+
+export var rightHand
 
 export const setupPoseNet = async () => {
     let net = await posenet.load({
@@ -18,6 +21,7 @@ export const setupPoseNet = async () => {
     videoElement = await loadVideo();
 
     detectPoseInRealTime(video);
+    disposeVariables();
 } 
 
 const loadVideo = async () => {
@@ -28,7 +32,6 @@ const loadVideo = async () => {
 
 const detectPoseInRealTime = async (video) => {
     async function poseDetectionFrame() {
-        let poses = [];
         let net = await posenet.load({
             architecture: "MobileNetV1",
             outputStride: 16,
@@ -42,39 +45,33 @@ const detectPoseInRealTime = async (video) => {
             flipHorizontal,
             outputStride
         );
-        poses.push(pose);
 
         let minPoseConfidence = 0.5
         let minPartConfidence = 0.5
 
-        poses.forEach(({score, keypoints}) => {
-            // const rightHand = keypoints.find(keypoint => {
-            //     return keypoint.part === "rightWrist"
-            // }) 
+        const {score, keypoints} = pose;        
+        
+        rightHand = keypoints[10];
 
-            // const partScore = keypoints.find(keypoint => {
-            //     if (rightHand) return keypoint.score
-            // })
-            let partScore = keypoints[10]['score']
- 
-            if (score >= minPoseConfidence && partScore >= minPartConfidence) {
-                console.log(keypoints[10]);
-            }
-            // debugger
-        })
+        const {position} = rightHand
+        
+        let partScore = keypoints[10]['score']
+
+        if (score >= minPoseConfidence && partScore >= minPartConfidence) {
+            console.log(keypoints[10]);
+            // console.log(position)
+        }
+
 
         requestAnimationFrame(poseDetectionFrame);
+        dispose(pose);
+        dispose(score);
+        dispose(keypoints);
+        dispose(partScore);
+        dispose(net);
+        disposeVariables();
     }
-    
     poseDetectionFrame();
+    disposeVariables();
+    dispose(poseDetectionFrame())
 }
-
-//pose contains 1. pose confidence score & 2. array of 17 keypoints
-//each keypoint contains 1. keypoint position (x,y) & 2. keypoint confidence score
-
-// const scores = heatmap.sigmoid();
-// const heatmapPositions = scores.armax(y, x);
-// const offsetVectors = [offsets.get(y, x, k), offsets.get(y, x, 17 + k)];
-// const keypointPositions = heatmapPositions * outputStride + offsetVectors
-
-// console.log(keypointPositions);

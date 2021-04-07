@@ -1,11 +1,7 @@
 body {
     background-color: rgb(24, 23, 23);
     width: 100vw;
-    // height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    height: 100vh;
 }
 
 .nav-wrapper {
@@ -22,14 +18,35 @@ body {
     font-size: 36px;
     // color: rgb(220, 0, 134);
     color: rgb(230,153,200);
+    box-shadow: inset;
 }
 
 .site-header > span {
     font-size: 46px;
 }
 
-.user-cam {
+#video {
     border-radius: 10px;
     border: solid 5px seagreen;
-    margin: 10px;
+    width: 720px; 
+    height: 560px;
+    position: absolute; 
+}
+
+.vid-wrapper {
+    // border: solid 5px tomato;
+    width: 720px;
+    height: 560px;
+    position: relative;
+}
+
+#canvas {
+    position: absolute; 
+    width: 720px;
+    height: 560px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border: solid 5px rgb(220, 0, 134);
+    border-radius: 10px;
 }
