@@ -28,13 +28,10 @@ body {
 #video {
     border-radius: 10px;
     border: solid 5px seagreen;
-    width: 720px; 
-    height: 560px;
     position: absolute; 
 }
 
 .vid-wrapper {
-    // border: solid 5px tomato;
     width: 720px;
     height: 560px;
     position: relative;
@@ -42,8 +39,6 @@ body {
 
 #canvas {
     position: absolute; 
-    width: 720px;
-    height: 560px;
     top: 0;
     left: 0;
     z-index: 1;

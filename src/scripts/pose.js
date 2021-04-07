@@ -6,16 +6,17 @@ import {dispose, disposeVariables, tidy} from '@tensorflow/tfjs'
 let videoElement = document.getElementById('video');
 
 const scaleFactor = 0.50;
-const flipHorizontal = true;
+const flipHorizontal = false;
 const outputStride = 16;
 
 export var rightHand
+export var pose
 
 export const setupPoseNet = async () => {
     let net = await posenet.load({
         architecture: "MobileNetV1", 
         outputStride: 16,
-        inputResolution: 513,
+        inputResolution: {width: 720, height: 560},
         multiplier: 0.75,
     });
     videoElement = await loadVideo();
@@ -39,7 +40,7 @@ const detectPoseInRealTime = async (video) => {
             multiplier: 0.75,
         });
 
-        const pose = await net.estimateSinglePose(
+        pose = await net.estimateSinglePose(
             videoElement,
             scaleFactor,
             flipHorizontal,
@@ -52,14 +53,11 @@ const detectPoseInRealTime = async (video) => {
         const {score, keypoints} = pose;        
         
         rightHand = keypoints[10];
-
-        const {position} = rightHand
         
         let partScore = keypoints[10]['score']
-
+        
         if (score >= minPoseConfidence && partScore >= minPartConfidence) {
-            console.log(keypoints[10]);
-            // console.log(position)
+            const {position} = rightHand
         }
 
 
