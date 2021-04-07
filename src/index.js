@@ -8,7 +8,7 @@ import '@tensorflow/tfjs-backend-cpu';
 import { disposeVariables } from '@tensorflow/tfjs';
 import { drawKeypoints } from '../src/scripts/draw';
 
-import { setupPoseNet, rightHand, pose } from "./scripts/pose";
+import { setupPoseNet, pose } from "./scripts/pose";
 
 window.onload = async () => {
     const canvas = document.getElementById('canvas');
@@ -28,7 +28,7 @@ window.onload = async () => {
                 drawKeypoints(pose["keypoints"], 0.9, ctx);
             }
 
-        }, 50)
+        }, 10)
     })
     disposeVariables()
 }

@@ -1,22 +1,21 @@
 import * as posenet from '@tensorflow-models/posenet';
 import { setupVideo } from './video';
 import "babel-polyfill";
-import {dispose, disposeVariables, tidy} from '@tensorflow/tfjs'
+import {dispose, disposeVariables} from '@tensorflow/tfjs'
 
 let videoElement = document.getElementById('video');
 
 const scaleFactor = 0.50;
-const flipHorizontal = false;
+const flipHorizontal = true;
 const outputStride = 16;
 
-export var rightHand
 export var pose
 
 export const setupPoseNet = async () => {
     let net = await posenet.load({
         architecture: "MobileNetV1", 
         outputStride: 16,
-        inputResolution: {width: 720, height: 560},
+        inputResolution: 516,
         multiplier: 0.75,
     });
     videoElement = await loadVideo();
@@ -36,7 +35,7 @@ const detectPoseInRealTime = async (video) => {
         let net = await posenet.load({
             architecture: "MobileNetV1",
             outputStride: 16,
-            inputResolution: 513,
+            inputResolution: 516,
             multiplier: 0.75,
         });
 
@@ -47,25 +46,12 @@ const detectPoseInRealTime = async (video) => {
             outputStride
         );
 
-        let minPoseConfidence = 0.5
-        let minPartConfidence = 0.5
-
         const {score, keypoints} = pose;        
-        
-        rightHand = keypoints[10];
-        
-        let partScore = keypoints[10]['score']
-        
-        if (score >= minPoseConfidence && partScore >= minPartConfidence) {
-            const {position} = rightHand
-        }
-
 
         requestAnimationFrame(poseDetectionFrame);
         dispose(pose);
         dispose(score);
         dispose(keypoints);
-        dispose(partScore);
         dispose(net);
         disposeVariables();
     }
