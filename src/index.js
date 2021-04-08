@@ -8,7 +8,7 @@ import '@tensorflow/tfjs-backend-cpu';
 import { disposeVariables } from '@tensorflow/tfjs';
 import { drawKeypoints } from '../src/scripts/draw';
 
-import { setupPoseNet, pose } from "./scripts/pose";
+import { setupPoseNet, pose, poseConfidence } from "./scripts/pose";
 
 window.onload = async () => {
     const canvas = document.getElementById('canvas');
@@ -25,10 +25,10 @@ window.onload = async () => {
         setInterval(async () => {
             if (pose) {
                 ctx.clearRect(0, 0, width, height)
-                drawKeypoints(pose["keypoints"], 0.9, ctx);
+                drawKeypoints(pose["keypoints"], 0.8, ctx);
             }
 
-        }, 10)
+        }, 1)
     })
     disposeVariables()
 }

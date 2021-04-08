@@ -2,46 +2,112 @@ body {
     background-color: rgb(24, 23, 23);
     width: 100vw;
     height: 100vh;
+    // display: flex;
+    // flex-direction: row-reverse;
+    // justify-content: center;
 }
 
 .nav-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 200px;
+    width: 100vw;
+    height: 150px;
     background-color: rgb(15,0,57);
 }
 
 .site-header {
     font-family: 'abduction2002';
-    font-size: 36px;
-    // color: rgb(220, 0, 134);
+    font-size: 46px;
+    transform: rotate(-20deg);
     color: rgb(230,153,200);
     box-shadow: inset;
+    text-shadow: 0 0 10px rgb(220, 0, 134),
+        0 0 60px rgb(220, 0, 134),
+        0 0 50px rgb(163, 100, 139),
+        0 0 20px rgb(163, 100, 139);
+
+    animation: neonsign 1s 3s forwards;
+    animation-timing-function: ease-in-out;
 }
 
 .site-header > span {
     font-size: 46px;
+    animation: neonsign 4s 3s infinite;
+    animation-timing-function: ease-in-out;
 }
 
-#video {
-    border-radius: 10px;
-    border: solid 5px seagreen;
-    position: absolute; 
+@keyframes neonsign {
+    0% {
+        text-shadow: none;
+    }
+    30% {
+        text-shadow: 0 0 30px rgb(220, 0, 134);
+    }
+    60% {
+        text-shadow: 0 0 30px rgb(220, 0, 134),
+            0 0 60px rgb(220, 0, 134);
+    }
+    80% {
+        text-shadow: none;
+    }
+    100% {
+        text-shadow: 0 0 10px rgb(220, 0, 134),
+            0 0 60px rgb(220, 0, 134),
+            0 0 50px rgb(163, 100, 139),
+            0 0 20px rgb(163, 100, 139),
+    }
 }
 
 .vid-wrapper {
-    width: 720px;
+    width: 700px;
     height: 560px;
-    position: relative;
+    position: absolute;
+    // z-index: 0;
+    margin-right: 10px;
+    margin-top: 50px;
+    // border-radius: 10px;
+    // border: solid 5px seagreen;
+}
+
+#video {
+    // border-radius: 10px;
+    // border: solid 5px blueviolet;
+    position: absolute; 
 }
 
 #canvas {
     position: absolute; 
     top: 0;
     left: 0;
-    z-index: 1;
-    border: solid 5px rgb(220, 0, 134);
+    // border: solid 5px rgb(220, 0, 134);
     border-radius: 10px;
+}
+
+.computer {
+    // border: solid 5px tomato;
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    // height: 784px;
+    // width: 1008px;
+    background-image: url('../images/computer.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 3;
+    // display: flex;
+    // justify-content: center;
+}
+
+.comp-wrapper {
+    // border: solid 5px pink;
+    position: relative;
+    border-radius: 10px;
+    min-height: 84%;
+    min-width: 45%;
+    max-height: 84%;
+    max-width: 45%;
+    display: flex;
+    justify-content: center;
 }
