@@ -79,6 +79,8 @@ body {
     // border-radius: 10px;
     // border: solid 5px blueviolet;
     position: absolute; 
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
 }
 
 #canvas {
@@ -87,6 +89,8 @@ body {
     left: 0;
     // border: solid 5px rgb(220, 0, 134);
     border-radius: 10px;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
 }
 
 .computer {

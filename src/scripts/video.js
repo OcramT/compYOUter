@@ -22,7 +22,6 @@ export const setupVideo = async () => {
     }
 
     const video = document.getElementById("video");
-
     const stream = await navigator.mediaDevices.getUserMedia({
         audio: false,
         video: {
