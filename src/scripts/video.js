@@ -1,4 +1,5 @@
 import "babel-polyfill";
+import adapter from 'webrtc-adapter';
 
 export const setupVideo = async () => {
 
