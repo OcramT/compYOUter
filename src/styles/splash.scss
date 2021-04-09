@@ -1,10 +1,12 @@
 body {
-    background-color: rgb(24, 23, 23);
+    // background-color: rgb(24, 23, 23);
+    background-image: url('../images/brick_background.jpeg');
+    background-repeat: round;
     width: 100vw;
     height: 100vh;
-    // display: flex;
-    // flex-direction: row-reverse;
-    // justify-content: center;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
 }
 
 .nav-wrapper {
@@ -12,16 +14,16 @@ body {
     align-items: center;
     justify-content: center;
     width: 100vw;
-    height: 150px;
+    height: 300px;
     // background-color: rgb(15,0,57);
-    background-image: url('../images//brick-bg.jpeg');
-    background-size: contain;
+    // background-image: url('../images/brick_background.jpeg');
+    background-size: cover;
     background-repeat: round;
 }
 
 .site-header {
     font-family: 'abduction2002';
-    font-size: 46px;
+    font-size: 80px;
     transform: rotate(-20deg);
     color: rgb(230,153,200);
     box-shadow: inset;
@@ -35,7 +37,7 @@ body {
 }
 
 .site-header > span {
-    font-size: 46px;
+    font-size: 80px;
     animation: neonsign 4s 3s infinite;
     animation-timing-function: ease-in-out;
 }
@@ -104,7 +106,8 @@ body {
 }
 
 .comp-wrapper {
-    border: solid 5px pink;
+    // border: solid 5px pink;
+    padding-top: 20px;
     position: relative;
     border-radius: 10px;
     min-height: 800px;
@@ -113,4 +116,5 @@ body {
     max-width: 850px;
     display: flex;
     justify-content: center;
+    background-color: transparent;
 }
