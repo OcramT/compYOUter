@@ -101,13 +101,13 @@ body {
 }
 
 .comp-wrapper {
-    // border: solid 5px pink;
+    border: solid 5px pink;
     position: relative;
     border-radius: 10px;
-    min-height: 84%;
-    min-width: 45%;
-    max-height: 84%;
-    max-width: 45%;
+    min-height: 800px;
+    min-width: 850px;
+    max-height: 800px;
+    max-width: 850px;
     display: flex;
     justify-content: center;
 }
