@@ -11,13 +11,19 @@ import { drawKeypoints } from '../src/scripts/draw';
 import { setupPoseNet, pose, poseConfidence } from "./scripts/pose";
 
 window.onload = async () => {
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
     const video = document.getElementById('video');
     const width = video.width;
     const height = video.height;
+
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
     canvas.width = width
     canvas.height = height
+
+    const canvas2 = document.getElementById('canvas2')
+    const ctx2 = canvas.getContext('2d');
+    canvas2.width = width
+    canvas2.height = height
 
     await setupPoseNet();
 
