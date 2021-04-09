@@ -25,17 +25,17 @@ window.onload = async () => {
     canvas2.width = width
     canvas2.height = height
 
-    await setupPoseNet();
+    // await setupPoseNet();
 
-    video.addEventListener('play', () => {
-        setInterval(async () => {
-            if (pose) {
-                ctx.clearRect(0, 0, width, height)
-                drawKeypoints(pose["keypoints"], 0.8, ctx);
-            }
+    // video.addEventListener('play', () => {
+    //     setInterval(async () => {
+    //         if (pose) {
+    //             ctx.clearRect(0, 0, width, height)
+    //             drawKeypoints(pose["keypoints"], 0.9, ctx);
+    //         }
 
-        }, 1)
-    })
+    //     }, 1)
+    // })
     disposeVariables()
 }
 

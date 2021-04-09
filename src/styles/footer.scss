@@ -1,0 +1,43 @@
+footer {
+    border: 2px solid rgb(220, 0, 134);
+    border-radius: 10px;
+    // background-color: rgb(230,153,200);
+    width: 100vw;
+    height: 195px;
+    display: flex;
+    justify-content: flex-end;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer-spacer {
+    width: 80%;
+    height: 100%;
+    // background-color: tomato;
+}
+
+.profile-links {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    width: 20%;
+    // background-color: turquoise;    
+
+    > a > i {
+        font-size: 2rem;
+        color: rgb(230,153,200);;
+        // text-shadow: 0 0 10px rgb(220, 0, 134),
+        // 0 0 60px rgb(220, 0, 134),
+        // 0 0 50px rgb(163, 100, 139),
+        // 0 0 20px rgb(163, 100, 139);
+    }
+}
+.profile-links > a > i:hover {
+    text-shadow: 0 0 10px rgb(220, 0, 134),
+    0 0 60px rgb(220, 0, 134),
+    0 0 50px rgb(163, 100, 139),
+    0 0 20px rgb(163, 100, 139);
+}
+

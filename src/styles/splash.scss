@@ -1,9 +1,12 @@
 body {
     background-color: rgb(24, 23, 23);
+}
+
+.upper {
     // background-image: url('../images/brick_background.jpeg');
     background-repeat: round;
     width: 100vw;
-    height: 100vh;
+    // height: 100vh;
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
@@ -23,8 +26,8 @@ body {
 
 .site-header {
     font-family: 'abduction2002';
-    font-size: 80px;
-    transform: rotate(-20deg);
+    font-size: 7rem;
+    transform: rotate(-10deg);
     color: rgb(230,153,200);
     box-shadow: inset;
     text-shadow: 0 0 10px rgb(220, 0, 134),
@@ -37,7 +40,7 @@ body {
 }
 
 .site-header > span {
-    font-size: 80px;
+    font-size: 8rem;
     animation: neonsign 4s 3s infinite;
     animation-timing-function: ease-in-out;
 }
@@ -64,62 +67,3 @@ body {
     }
 }
 
-.vid-wrapper {
-    width: 700px;
-    height: 560px;
-    position: absolute;
-    // z-index: 0;
-    margin-right: 10px;
-    margin-top: 50px;
-    // border-radius: 10px;
-    // border: solid 5px seagreen;
-}
-
-#video {
-    // border-radius: 10px;
-    // border: solid 5px blueviolet;
-    position: absolute; 
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-}
-
-#canvas {
-    position: absolute; 
-    top: 0;
-    left: 0;
-    // border: solid 5px rgb(220, 0, 134);
-    border-radius: 10px;
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-}
-
-.computer {
-    // border: solid 5px tomato;
-    border-radius: 10px;
-    height: 100%;
-    width: 100%;
-    // height: 784px;
-    // width: 1008px;
-    background-image: url('../images/computer.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    position: absolute;
-    z-index: 3;
-    // display: flex;
-    // justify-content: center;
-}
-
-.comp-wrapper {
-    // border: solid 5px pink;
-    padding-top: 20px;
-    padding-left: 20px;
-    position: relative;
-    border-radius: 10px;
-    min-height: 800px;
-    min-width: 850px;
-    max-height: 800px;
-    max-width: 850px;
-    display: flex;
-    justify-content: center;
-    background-color: transparent;
-}

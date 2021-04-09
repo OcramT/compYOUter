@@ -1,0 +1,29 @@
+.vid-wrapper {
+    width: 700px;
+    height: 560px;
+    position: absolute;
+    // z-index: 0;
+    margin-right: 10px;
+    margin-top: 50px;
+    // border-radius: 10px;
+    // border: solid 5px seagreen;
+}
+
+#video {
+    // border-radius: 10px;
+    // border: solid 5px blueviolet;
+    position: absolute; 
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+#canvas {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    // border: solid 5px rgb(220, 0, 134);
+    border-radius: 10px;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
