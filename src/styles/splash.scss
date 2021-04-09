@@ -13,7 +13,10 @@ body {
     justify-content: center;
     width: 100vw;
     height: 150px;
-    background-color: rgb(15,0,57);
+    // background-color: rgb(15,0,57);
+    background-image: url('../images//brick-bg.jpeg');
+    background-size: contain;
+    background-repeat: round;
 }
 
 .site-header {
