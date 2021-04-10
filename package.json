@@ -48,8 +48,7 @@
     "babel-polyfill": "^6.26.0",
     "i": "^0.3.6",
     "node-sass": "^4.14.1",
-    "npm": "^7.8.0",
-    "webrtc-adapter": "^7.7.1"
+    "npm": "^7.8.0"
   },
   "babel": {
     "presets": [

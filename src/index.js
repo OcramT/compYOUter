@@ -10,7 +10,8 @@ import { drawKeypoints } from '../src/scripts/draw';
 
 import { setupPoseNet, pose, poseConfidence } from "./scripts/pose";
 
-window.onload = async () => {
+document.addEventListener('DOMContentLoaded', async () => {
+// window.onload = async () => {
     const video = document.getElementById('video');
     const width = video.width;
     const height = video.height;
@@ -20,10 +21,10 @@ window.onload = async () => {
     canvas.width = width
     canvas.height = height
 
-    const canvas2 = document.getElementById('canvas2')
-    const ctx2 = canvas.getContext('2d');
-    canvas2.width = width
-    canvas2.height = height
+    // const canvas2 = document.getElementById('canvas2')
+    // const ctx2 = canvas.getContext('2d');
+    // canvas2.width = width
+    // canvas2.height = height
 
     await setupPoseNet();
 
@@ -31,13 +32,16 @@ window.onload = async () => {
         setInterval(async () => {
             if (pose) {
                 ctx.clearRect(0, 0, width, height)
-                drawKeypoints(pose["keypoints"], 0.9, ctx);
+                drawKeypoints(pose["keypoints"][0], 0.6, ctx);
             }
 
         }, 1)
     })
+
+    Pose.dispose()
     disposeVariables()
-}
+// }
+});
 
 
 

@@ -6,7 +6,7 @@ import {dispose, disposeVariables} from '@tensorflow/tfjs'
 let videoElement = document.getElementById('video');
 
 const scaleFactor = 0.50;
-const flipHorizontal = true;
+const flipHorizontal = false;
 const outputStride = 16;
 
 export var pose

@@ -1,10 +1,10 @@
-export function drawKeypoints(keypoints, minConfidence, ctx, scale = 1) {
-    const keypoint = keypoints[10];
+export function drawKeypoints(keypoint, minConfidence, ctx, scale = 1) {
+    // const keypoint = keypoints[10];
 
-    if (keypoint.score < minConfidence) {
+    // if (keypoint.score < minConfidence) {
         const { y, x } = keypoint.position;
         drawPoint(ctx, y * scale, x * scale, 15);
-    }
+    // }
 
 }
 
