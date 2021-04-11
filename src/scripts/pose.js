@@ -10,7 +10,9 @@ const flipHorizontal = false;
 const outputStride = 16;
 
 export var pose
+export var poseKeypoints
 export var poseConfidence
+export var nose
 
 export const setupPoseNet = async () => {
     let net = await posenet.load({
@@ -48,7 +50,9 @@ const detectPoseInRealTime = async (video) => {
         );
 
         const {score, keypoints} = pose;
-        poseConfidence = score        
+        poseConfidence = score
+        poseKeypoints = keypoints 
+        nose = keypoints[0]       
 
         requestAnimationFrame(poseDetectionFrame);
         dispose(pose);
