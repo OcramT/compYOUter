@@ -8,7 +8,7 @@ import '@tensorflow/tfjs-backend-cpu';
 import { disposeVariables } from '@tensorflow/tfjs';
 import { drawFace, drawRobot } from '../src/scripts/draw';
 
-import { setupPoseNet, pose, poseConfidence, nose } from "./scripts/pose";
+import { setupPoseNet, pose} from "./scripts/pose";
 
 document.addEventListener('DOMContentLoaded', async () => {
     const video = document.getElementById('video');
@@ -23,34 +23,41 @@ document.addEventListener('DOMContentLoaded', async () => {
     const compButton = document.getElementById('compmoji')
     const robotButton = document.getElementById('robotify')
 
-    robotButton.addEventListener('change', async () => {
-        await setupPoseNet();
-    
-        if (robotButton.checked) {
+    const robotify = robotButton.addEventListener('change', async () => {
+        
+        if (!robotButton.checked) {
+            await setupPoseNet();
             video.addEventListener('play', () => {
                 setInterval(async () => {
                     if (pose) {
-                        ctx.clearRect(0, 0, width, height)
+                        ctx.fillStyle = 'transparent';
+                        ctx.clearRect(0, 0, width, height);
                         drawRobot(pose["keypoints"], 0.8, ctx, 1);
                     }
                 }, 1)
             })
-        } else if (!robotButton.checked) {
-            video.removeEventListener()
+        } else {
+            video.stop()
+            robotButton.removeEventListener('change', robotify)
         }
     })
 
-    compButton.addEventListener('checked', async () => {
+    const compify = compButton.addEventListener('change', async () => {
         await setupPoseNet();
 
-        video.addEventListener('play', () => {
-            setInterval(async () => {
-                if (pose) {
-                    ctx.clearRect(0, 0, width, height)
-                    drawFace(pose["keypoints"], 0.8, ctx, 1);
-                }
-            }, 1)
-        })
+        if (!compButton.checked) {
+            video.addEventListener('play', () => {
+                setInterval(async () => {
+                    if (pose) {
+                        ctx.clearRect(0, 0, width, height)
+                        drawFace(pose["keypoints"], 0.8, ctx, 1);
+                    }
+                }, 1)
+            })
+        } else {
+            video.stop()
+            compButton.removeEventListener('change', compify)
+        }
     })
 
     disposeVariables()

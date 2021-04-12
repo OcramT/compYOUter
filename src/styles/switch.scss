@@ -79,7 +79,7 @@ input:checked + .switch-left + .switch-right {
     width: 0.4em;
     height: 2.45em;
     bottom: -0.45em;
-    background-color: $switch-accent;
+    background-color: rgb(187, 79, 60);
     transform: skewY(-65deg);
 }
 
@@ -119,7 +119,7 @@ input:checked + .switch-left + .switch-right{
 }
 
 input:checked + .switch-left + .switch-right::before {
-    background-color: $switch-accent;
+    background-color: rgb(187, 79, 60);
 }
 
 input:focus + .switch-left {
