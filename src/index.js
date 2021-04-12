@@ -22,10 +22,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const compButton = document.getElementById('compmoji')
     const robotButton = document.getElementById('robotify')
+    let checked = false
 
     robotButton.addEventListener('change', async () => {
         
-        if (!robotButton.checked) {
+        if (checked === false) {
             await setupPoseNet();
             video.addEventListener('play', () => {
                 setInterval(async () => {
@@ -36,7 +37,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     }
                 }, 1)
             })
-        } else {
+            checked = true
+        } else if (checked === true) {
             robotButton.removeEventListener('change', () => {
                 video.removeEventListener('play', () => {
                     const stream = video.srcObject;
@@ -45,47 +47,40 @@ document.addEventListener('DOMContentLoaded', async () => {
                         track.stop();
                     })
                     video.srcObject = null;
-                    video.stop()
+                    stream.stop()
                 })
             })
+            checked = false
         } 
     }) 
-           
-            // if (!robotButton.checked) {
-            // await setupPoseNet();
-            // video.addEventListener('play', () => {
-            //     setInterval(async () => {
-            //         if (pose) {
-            //             ctx.fillStyle = 'transparent';
-            //             ctx.clearRect(0, 0, width, height);
-            //             drawRobot(pose["keypoints"], 0.8, ctx, 1);
-            //         }
-            //     }, 1)
-            // })
-            // } else if (robotButton.checked) {
-            //     const stream = video.srcObject;
-            //     const tracks = stream.getTracks();
-            //     tracks.forEach(function(track) {
-            //         track.stop();
-            //     })
-            //     video.srcObject = null;
-            // }
 
     compButton.addEventListener('change', async () => {
-        await setupPoseNet();
 
-        if (!compButton.checked) {
+        if (checked === false) {
+            await setupPoseNet();
             video.addEventListener('play', () => {
                 setInterval(async () => {
                     if (pose) {
-                        ctx.clearRect(0, 0, width, height)
+                        ctx.fillStyle = 'transparent';
+                        ctx.clearRect(0, 0, width, height);
                         drawFace(pose["keypoints"], 0.8, ctx, 1);
                     }
                 }, 1)
             })
-        } else {
-            video.stop()
-            compButton.removeEventListener('change', compify)
+            checked = true
+        } else if (checked === true) {
+            // compButton.removeEventListener('change', () => {
+                video.removeEventListener('play', () => {
+                    const stream = video.srcObject;
+                    const tracks = stream.getTracks();
+                    tracks.forEach(function (track) {
+                        track.stop();
+                    })
+                    video.srcObject = null;
+                    stream.stop()
+                })
+            // })
+            checked = false
         }
     })
 
