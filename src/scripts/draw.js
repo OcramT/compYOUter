@@ -38,7 +38,7 @@ function drawMouth(keypoints, minConfidence, ctx, scale = 1) {
 }
 
 
-export function drawPoint(ctx, y, x, r = 3, color) {
+function drawPoint(ctx, y, x, r = 3, color) {
     ctx.beginPath();
     ctx.arc(x * 1, y * 1, r, 0, 2 * Math.PI);
     ctx.fillStyle = color;
@@ -52,6 +52,19 @@ function drawLine(ctx, y, x, color) {
     ctx.fillStyle = color;
     ctx.lineWidth = 10;
     ctx.stroke();
+}
+
+export function drawRobot(keypoints, minConfidence, ctx, scale = 1) {
+    const keypoint = keypoints[0];
+    if (keypoint.score >= minConfidence) {
+        const { y, x } = keypoint.position;
+        const drawing = new Image()
+        drawing.src = 'src/images/robotHeadMedium.png';
+        // ctx.drawImage(drawing, y * scale, x * scale);
+        ctx.drawImage(drawing, 0, 0, 300, 200, x -100, y-225, 700, 560);
+        //ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+
+    }
 }
 
 // export function drawKeypoints(keypoints, minConfidence, ctx, scale = 1) {

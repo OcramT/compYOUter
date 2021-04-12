@@ -188,6 +188,7 @@ body:before {
 
 .directions {
     width: 60%;
+    height: 45%;
     line-height: 35px;
     position: relative;
     top: 150px;
@@ -199,11 +200,14 @@ body:before {
         0 0 10px #00ff66, 
         0 0 20px #00ff66, 
         0 0 30px #00ff66;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid aquamarine;
 }
 
-// .directions p {
-//     margin-left: 10px;
-// }
+.directions > .button-wrapper {
+    justify-self:baseline;
+}
 
 .prompt {
     display: flex;
@@ -232,30 +236,40 @@ body:before {
     }
 }
 
-.scanline {
-    width: 100%;
-    height: 100px;
-    z-index: 8;
-    background: linear-gradient(
-        0deg,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(255, 255, 255, 0.2) 10%,
-        rgba(0, 0, 0, 0.1) 100%
-    );
-    opacity: 0.1;
-    position: absolute;
-    bottom: 100%;
-    animation: scanline 10s linear infinite;
+.button-wrapper {
+    display: flex;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 10%;
+    justify-content: center;
+    justify-content: space-around;
+    border: 2px solid tomato;
 }
 
-@keyframes scanline {
-    0% {
-        bottom: 100%;
-    }
-    80% {
-        bottom: 100%;
-    }
-    100% {
-        bottom: 0%;
-    }
-}
+// .scanline {
+//     width: 100%;
+//     height: 100px;
+//     z-index: 8;
+//     background: linear-gradient(
+//         0deg,
+//         rgba(0, 0, 0, 0) 0%,
+//         rgba(255, 255, 255, 0.2) 10%,
+//         rgba(0, 0, 0, 0.1) 100%
+//     );
+//     opacity: 0.1;
+//     position: absolute;
+//     bottom: 100%;
+//     animation: scanline 10s linear infinite;
+// }
+
+// @keyframes scanline {
+//     0% {
+//         bottom: 100%;
+//     }
+//     80% {
+//         bottom: 100%;
+//     }
+//     100% {
+//         bottom: 0%;
+//     }
+// }

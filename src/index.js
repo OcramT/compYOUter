@@ -6,14 +6,11 @@ import '@tensorflow/tfjs-converter';
 import '@tensorflow/tfjs-backend-webgl';
 import '@tensorflow/tfjs-backend-cpu';
 import { disposeVariables } from '@tensorflow/tfjs';
-import { drawKeypoints, drawFace } from '../src/scripts/draw';
+import { drawFace, drawRobot } from '../src/scripts/draw';
 
 import { setupPoseNet, pose, poseConfidence, nose } from "./scripts/pose";
 
-// console.log(pose)
-
 document.addEventListener('DOMContentLoaded', async () => {
-// window.onload = async () => {
     const video = document.getElementById('video');
     const width = video.width;
     const height = video.height;
@@ -23,28 +20,36 @@ document.addEventListener('DOMContentLoaded', async () => {
     canvas.width = width
     canvas.height = height
 
-    // const canvas2 = document.getElementById('canvas2')
-    // const ctx2 = canvas.getContext('2d');
-    // canvas2.width = width
-    // canvas2.height = height
-    // console.log(pose)
-    await setupPoseNet();
-    // console.log(pose)
-    // debugger
-    video.addEventListener('play', () => {
-        // console.log(pose)
-        setInterval(async () => {
-            // debugger
-            if (pose) {
-                ctx.clearRect(0, 0, width, height)
-                drawFace(pose["keypoints"], 0.8, ctx, 1);
-            }
+    const compButton = document.getElementById('compmoji')
+    const robotButton = document.getElementById('robotify')
 
-        }, 1)
+    const robotify = robotButton.addEventListener('click', async () => {
+        await setupPoseNet();
+    
+        video.addEventListener('play', () => {
+            setInterval(async () => {
+                if (pose) {
+                    ctx.clearRect(0, 0, width, height)
+                    drawRobot(pose["keypoints"], 0.8, ctx, 1);
+                }
+            }, 1)
+        })
+    })
+
+    compButton.addEventListener('click', async () => {
+        await setupPoseNet();
+
+        video.addEventListener('play', () => {
+            setInterval(async () => {
+                if (pose) {
+                    ctx.clearRect(0, 0, width, height)
+                    drawFace(pose["keypoints"], 0.8, ctx, 1);
+                }
+            }, 1)
+        })
     })
 
     disposeVariables()
-// }
 });
 
 
