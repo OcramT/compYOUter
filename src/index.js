@@ -23,7 +23,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     const compButton = document.getElementById('compmoji')
     const robotButton = document.getElementById('robotify')
 
-    const robotify = robotButton.addEventListener('change', async () => {
+    // if (!robotButton.checked) {
+
+    robotButton.addEventListener('change', async () => {
         
         if (!robotButton.checked) {
             await setupPoseNet();
@@ -34,15 +36,52 @@ document.addEventListener('DOMContentLoaded', async () => {
                         ctx.clearRect(0, 0, width, height);
                         drawRobot(pose["keypoints"], 0.8, ctx, 1);
                     }
-                }, 1)
+            }, 1)
+        })
+        // } else if (robotButton.checked) {
+        //     const stream = video.srcObject;
+        //     const tracks = stream.getTracks();
+        //     tracks.forEach(function(track) {
+        //         track.stop();
+        //     })
+        //     video.srcObject = null;
+    }
+
+    robotButton.removeEventListener('change', async () => {
+        if (robotButton.checked) {
+            const stream = video.srcObject;
+            const tracks = stream.getTracks();
+            tracks.forEach(function (track) {
+                track.stop();
             })
-        } else {
-            video.stop()
-            robotButton.removeEventListener('change', robotify)
+            video.srcObject = null;
+            video.removeEventListener('play', () => {
+                video.stop()
+            })
         }
     })
+           
+            // if (!robotButton.checked) {
+            // await setupPoseNet();
+            // video.addEventListener('play', () => {
+            //     setInterval(async () => {
+            //         if (pose) {
+            //             ctx.fillStyle = 'transparent';
+            //             ctx.clearRect(0, 0, width, height);
+            //             drawRobot(pose["keypoints"], 0.8, ctx, 1);
+            //         }
+            //     }, 1)
+            // })
+            // } else if (robotButton.checked) {
+            //     const stream = video.srcObject;
+            //     const tracks = stream.getTracks();
+            //     tracks.forEach(function(track) {
+            //         track.stop();
+            //     })
+            //     video.srcObject = null;
+            // }
 
-    const compify = compButton.addEventListener('change', async () => {
+    compButton.addEventListener('change', async () => {
         await setupPoseNet();
 
         if (!compButton.checked) {
@@ -64,4 +103,4 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 
-
+})
