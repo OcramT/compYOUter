@@ -187,7 +187,7 @@ body:before {
 // }
 
 .directions {
-    width: 60%;
+    width: 75%;
     height: 45%;
     line-height: 35px;
     position: relative;
@@ -237,13 +237,22 @@ body:before {
 }
 
 .button-wrapper {
+    // position: absolute;
+    color: #f0fff8;
+    text-shadow: 
+        0 0 3px #FFB000, 
+        0 0 10px #FFB000, 
+        0 0 20px #FFB000, 
+        0 0 30px #FFB000;
+    // color: #FFB000;
+    text-transform: uppercase;
+    height: 45%;
     display: flex;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top: 10%;
+    // top: 60%;
     justify-content: center;
+    align-items: center;
     justify-content: space-around;
-    border: 2px solid tomato;
+    // border: 2px solid tomato;
 }
 
 // .scanline {

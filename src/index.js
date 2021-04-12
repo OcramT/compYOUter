@@ -23,20 +23,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     const compButton = document.getElementById('compmoji')
     const robotButton = document.getElementById('robotify')
 
-    const robotify = robotButton.addEventListener('click', async () => {
+    robotButton.addEventListener('change', async () => {
         await setupPoseNet();
     
-        video.addEventListener('play', () => {
-            setInterval(async () => {
-                if (pose) {
-                    ctx.clearRect(0, 0, width, height)
-                    drawRobot(pose["keypoints"], 0.8, ctx, 1);
-                }
-            }, 1)
-        })
+        if (robotButton.checked) {
+            video.addEventListener('play', () => {
+                setInterval(async () => {
+                    if (pose) {
+                        ctx.clearRect(0, 0, width, height)
+                        drawRobot(pose["keypoints"], 0.8, ctx, 1);
+                    }
+                }, 1)
+            })
+        } else if (!robotButton.checked) {
+            video.removeEventListener()
+        }
     })
 
-    compButton.addEventListener('click', async () => {
+    compButton.addEventListener('checked', async () => {
         await setupPoseNet();
 
         video.addEventListener('play', () => {
