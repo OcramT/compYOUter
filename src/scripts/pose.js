@@ -65,3 +65,7 @@ const detectPoseInRealTime = async (video) => {
     disposeVariables();
     dispose(poseDetectionFrame())
 }
+
+export const removePoseNet = () => {
+    posenet.PoseNet = null    
+}
