@@ -67,5 +67,5 @@ const detectPoseInRealTime = async (video) => {
 }
 
 export const removePoseNet = () => {
-    posenet.PoseNet = null    
+    //how do i stop posenet???  
 }
