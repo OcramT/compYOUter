@@ -33,3 +33,11 @@ export const setupVideo = async () => {
         (resolve) => (video.onloadedmetadata = () => resolve(video))
     );
 };
+
+export const endStream = () => {
+    const stream = video.srcObject;
+    const tracks = stream.getTracks();
+    tracks.forEach(function (track) {
+        track.stop();
+    })
+}

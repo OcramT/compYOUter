@@ -2,20 +2,26 @@ import * as posenet from '@tensorflow-models/posenet';
 import { setupVideo } from './video';
 import "babel-polyfill";
 import {dispose, disposeVariables} from '@tensorflow/tfjs'
+import * as tf from '@tensorflow/tfjs';
 
 let videoElement = document.getElementById('video');
 
 const scaleFactor = 0.50;
-const flipHorizontal = false;
+const flipHorizontal = true;
 const outputStride = 16;
 
 export var pose
 export var poseKeypoints
-export var poseConfidence
-export var nose
+
+let net = posenet.load({
+    architecture: "MobileNetV1",
+    outputStride: 16,
+    inputResolution: 516,
+    multiplier: 0.75,
+});
 
 export const setupPoseNet = async () => {
-    let net = await posenet.load({
+    net = await posenet.load({
         architecture: "MobileNetV1", 
         outputStride: 16,
         inputResolution: 516,
@@ -24,7 +30,7 @@ export const setupPoseNet = async () => {
     videoElement = await loadVideo();
 
     detectPoseInRealTime(video);
-    disposeVariables();
+    tf.disposeVariables();
 } 
 
 const loadVideo = async () => {
@@ -35,7 +41,7 @@ const loadVideo = async () => {
 
 const detectPoseInRealTime = async (video) => {
     async function poseDetectionFrame() {
-        let net = await posenet.load({
+        net = await posenet.load({
             architecture: "MobileNetV1",
             outputStride: 16,
             inputResolution: 516,
@@ -50,22 +56,19 @@ const detectPoseInRealTime = async (video) => {
         );
 
         const {score, keypoints} = pose;
-        poseConfidence = score
         poseKeypoints = keypoints 
-        nose = keypoints[0]       
 
         requestAnimationFrame(poseDetectionFrame);
-        dispose(pose);
-        dispose(score);
-        dispose(keypoints);
-        dispose(net);
-        disposeVariables();
+        tf.dispose(pose);
+        tf.dispose(keypoints);
+        tf.dispose(net);
+        tf.disposeVariables();
     }
     poseDetectionFrame();
-    disposeVariables();
-    dispose(poseDetectionFrame())
+    tf.disposeVariables();
+    tf.dispose(poseDetectionFrame())
 }
 
-export const removePoseNet = () => {
-    //how do i stop posenet???  
+export const removePoseNet = (ctx, pose) => {
+    pose = null
 }

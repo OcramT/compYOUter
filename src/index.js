@@ -5,19 +5,12 @@ import '@tensorflow/tfjs-core';
 import '@tensorflow/tfjs-converter';
 import '@tensorflow/tfjs-backend-webgl';
 import '@tensorflow/tfjs-backend-cpu';
-import { dispose, disposeVariables } from '@tensorflow/tfjs';
-import { drawFace, drawRobot } from '../src/scripts/draw';
+import * as tf from '@tensorflow/tfjs';
 import * as posenet from '@tensorflow-models/posenet';
+import { drawFace, drawRobot } from '../src/scripts/draw';
+import { endStream } from '../src/scripts/video'
 
-import { setupPoseNet, removePoseNet, pose} from "./scripts/pose";
-
-const endStream = () => {
-    const stream = video.srcObject;
-    const tracks = stream.getTracks();
-    tracks.forEach(function (track) {
-        track.stop();
-    })
-}
+import { setupPoseNet, removePoseNet, pose, poseKeypoints} from "./scripts/pose";
 
 document.addEventListener('DOMContentLoaded', () => {
     const video = document.getElementById('video');
@@ -40,9 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
             video.addEventListener('play', () => {
                 setInterval(async () => {
                     if (pose) {
-                        ctx.fillStyle = 'transparent';
                         ctx.clearRect(0, 0, width, height);
-                        drawFace(pose["keypoints"], 0.8, ctx, 1);
+                        drawFace(poseKeypoints, 0.8, ctx, 1);
                     }
                 }, 1)
             })
@@ -60,9 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
             video.addEventListener('play', () => {
                 setInterval(async () => {
                     if (pose) {
-                        ctx.fillStyle = 'transparent';
                         ctx.clearRect(0, 0, width, height);
-                        drawRobot(pose["keypoints"], 0.8, ctx, 1);
+                        drawRobot(poseKeypoints, 0.8, ctx, 1);
                     }
                 }, 1)
             })
@@ -72,6 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } 
     }) 
 
-    disposeVariables()
+    tf.disposeVariables()
 });
 
