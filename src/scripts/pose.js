@@ -13,12 +13,14 @@ const outputStride = 16;
 export var pose
 export var poseKeypoints
 
-let net = posenet.load({
+var net = posenet.load({
     architecture: "MobileNetV1",
     outputStride: 16,
     inputResolution: 516,
     multiplier: 0.75,
 });
+
+var animationReq;
 
 export const setupPoseNet = async () => {
     net = await posenet.load({
@@ -58,7 +60,7 @@ const detectPoseInRealTime = async (video) => {
         const {score, keypoints} = pose;
         poseKeypoints = keypoints 
 
-        requestAnimationFrame(poseDetectionFrame);
+        animationReq = requestAnimationFrame(poseDetectionFrame);
         tf.dispose(pose);
         tf.dispose(keypoints);
         tf.dispose(net);
@@ -69,6 +71,8 @@ const detectPoseInRealTime = async (video) => {
     tf.dispose(poseDetectionFrame())
 }
 
-export const removePoseNet = (ctx, pose) => {
+export const removePoseNet = () => {
+    net = null
     pose = null
+    cancelAnimationFrame(animationReq)
 }

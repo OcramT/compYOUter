@@ -34,7 +34,7 @@ export const setupVideo = async () => {
     );
 };
 
-export const endStream = () => {
+export const endStream = (video) => {
     const stream = video.srcObject;
     const tracks = stream.getTracks();
     tracks.forEach(function (track) {
