@@ -17,7 +17,7 @@ CompYOUter is a simple, interactive application exploring the field of human-com
 
 ## Setting up Video Stream
 
-The first step was prompting the user for access to their webcam. To accomplished this I took advantage of vanilla DOM manipulation to grab the video element with `document.getElementById()` along with the MediaDevices WebAPI and `getUserMedia()` to request video access from the user and generate a video stream object. I then created and returned new Promises from the `setupVideo()` function so that I could later use it in conjunction with Javascript's `async` & `await` functions so the code for the video filters doesn't fire until the video stream is set up.
+The first step was prompting the user for access to their webcam. To accomplish this I took advantage of vanilla DOM manipulation to grab the video element with `document.getElementById()` along with the MediaDevices WebAPI and `getUserMedia()` to request video access from the user and generate a video stream object. I then created and returned new Promises from my `setupVideo()` function so that I could later use it in conjunction with Javascript's `async` & `await` to ensure the code for the video filters doesn't fire until the video stream is set up.
 
 ```js
 // Grabbing with video element with vanilla DOM manipulation and then using MediaDevices WebAPI to prompt the user for camera access
@@ -42,7 +42,7 @@ const stream = await navigator.mediaDevices.getUserMedia({
 
 ## Setting up PoseNet
 
-[Tensorflow][8] - a popular machine learning library for Javascript - and [PoseNet][7] - one of their machine learning models - provided an accessible way to track a user's movement through the web feed I'd set up. To achieve this, I utilized PoseNet's inbuilt functions in conjunction with Javscript's asynchronicity (using `async` and `await` for DRYer, cleaner code) to grab each video frame and generate a single pose estimation with associated keypoints.
+[Tensorflow][8] - a popular machine learning library for Javascript - and [PoseNet][7] - one of their machine learning models - provided an accessible way to track a user's movements through the web feed I'd set up. I utilized PoseNet's inbuilt functions in conjunction with Javscript's asynchronicity (using `async` and `await` for DRYer, cleaner code) to grab each video frame and generate a single pose estimation with associated keypoints.
 
 ```js
 const detectPoseInRealTime = async (video) => {
@@ -69,7 +69,7 @@ const detectPoseInRealTime = async (video) => {
 
 ## Drawing over Webcam Feed with KeyPoints & Canvas
 
-The last step was figuring out a way to overlay images or drawings on top of the video feed. I pulled keypoints from the PoseNet keypoints object and filtered them by confidence rating and then established them as context on which to draw using Canvas.
+The last step was figuring out a way to overlay images and drawings on top of the video feed. I pulled keypoints from the PoseNet keypoints object and filtered them by confidence rating. I used them as the context on which to draw using Canvas.
 
 ```js
 // Drawing the circle for the 'compmoji' button by grabbing a specific keypoint from the PoseNet Pose object and filtering based on the minimum confidence score
