@@ -10,7 +10,7 @@ CompYOUter is a simple, interactive application exploring the field of human-com
 * CSS/SASS
 * Node.js
 * Canvas
-* Inspired by the work of [Charlie Gerard][9]
+<!-- * Inspired by the work of [Charlie Gerard][9] -->
 
 
 ## <p align="center"> [Check Out the Live App!][1] </p>
