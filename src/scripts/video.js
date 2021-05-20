@@ -19,22 +19,32 @@ export const setupVideo = async () => {
             });
         }
     }
-
-    const video = document.getElementById("video");
+    
+    var video = document.getElementById("video");
     const stream = await navigator.mediaDevices.getUserMedia({
         audio: false,
         video: {
+            height: 560, 
+            width: 700,
             facingMode: "user",
         },
     });
+    video.height = 560
+    video.width = 700
     video.srcObject = stream;
 
-    return new Promise(
-        (resolve) => (video.onloadedmetadata = () => resolve(video))
-    );
+    // return new Promise(
+    //     (resolve) => (video.onloadedmetadata = () => {console.log('promise firing');resolve(video)})
+    // );
+
+    return new Promise((resolve) => {
+        video.onloadedmetadata = () => { 
+            resolve(video);
+    }})
 };
 
 export const endStream = (video) => {
+    console.log('endStream function', video)
     const stream = video.srcObject;
     const tracks = stream.getTracks();
     tracks.forEach(function (track) {

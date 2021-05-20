@@ -22,6 +22,12 @@ var net = posenet.load({
 
 var animationReq;
 
+const loadVideo = async () => {
+    const video = await setupVideo();
+    video.play();
+    return video
+}
+
 export const setupPoseNet = async () => {
     net = await posenet.load({
         architecture: "MobileNetV1", 
@@ -31,15 +37,9 @@ export const setupPoseNet = async () => {
     });
     videoElement = await loadVideo();
 
-    detectPoseInRealTime(video);
+    await detectPoseInRealTime(video);
     tf.disposeVariables();
 } 
-
-const loadVideo = async () => {
-    const video = await setupVideo();
-    video.play();
-    return video
-}
 
 const detectPoseInRealTime = async (video) => {
     async function poseDetectionFrame() {
