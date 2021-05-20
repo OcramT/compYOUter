@@ -2,7 +2,7 @@
 
 Welcome to the compYOUter ReadMe!
 
-CompYOUter is be a simple, interactive application exploring the field of human-computer interaction (HCI). Users can utilize their webcam to track their movements and apply filters over keypoints on their body. This project was built by [Marco Torre][2] using:
+CompYOUter is a simple, interactive application exploring the field of human-computer interaction (HCI). Users can utilize their webcam to track their movements and apply filters over keypoints on their body. This project was built by [Marco Torre][2] using:
 
 * Javascript
 * [Tensorflow][8]
