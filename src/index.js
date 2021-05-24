@@ -6,7 +6,6 @@ import '@tensorflow/tfjs-core';
 import '@tensorflow/tfjs-converter';
 import '@tensorflow/tfjs-backend-webgl';
 import '@tensorflow/tfjs-backend-cpu';
-// import * as tf from '@tensorflow/tfjs';
 import { dispose, disposeVariables } from '@tensorflow/tfjs'
 import * as posenet from '@tensorflow-models/posenet';
 import { drawFace, drawRobot } from '../src/scripts/draw';

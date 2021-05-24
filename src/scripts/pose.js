@@ -2,7 +2,6 @@ import * as posenet from '@tensorflow-models/posenet';
 import { setupVideo } from './video';
 import "babel-polyfill";
 import {dispose, disposeVariables} from '@tensorflow/tfjs'
-import * as tf from '@tensorflow/tfjs';
 
 let videoElement = document.getElementById('video');
 
@@ -38,7 +37,7 @@ export const setupPoseNet = async () => {
     videoElement = await loadVideo();
 
     await detectPoseInRealTime(video);
-    tf.disposeVariables();
+    disposeVariables();
 } 
 
 const detectPoseInRealTime = async (video) => {
@@ -61,14 +60,14 @@ const detectPoseInRealTime = async (video) => {
         poseKeypoints = keypoints 
 
         animationReq = requestAnimationFrame(poseDetectionFrame);
-        tf.dispose(pose);
-        tf.dispose(keypoints);
-        tf.dispose(net);
-        tf.disposeVariables();
+        dispose(pose);
+        dispose(keypoints);
+        dispose(net);
+        disposeVariables();
     }
     poseDetectionFrame();
-    tf.disposeVariables();
-    tf.dispose(poseDetectionFrame())
+    disposeVariables();
+    dispose(poseDetectionFrame())
 }
 
 export const removePoseNet = () => {

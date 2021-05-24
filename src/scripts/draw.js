@@ -60,22 +60,6 @@ export function drawRobot(keypoints, minConfidence, ctx, scale = 1) {
         const { y, x } = keypoint.position;
         const drawing = new Image()
         drawing.src = 'src/images/robotHeadMedium.png';
-        // ctx.drawImage(drawing, y * scale, x * scale);
         ctx.drawImage(drawing, 0, 0, 300, 200, x -100, y-225, 700, 560);
-        //ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
-
     }
 }
-
-// export function drawKeypoints(keypoints, minConfidence, ctx, scale = 1) {
-//     for (let i = 0; i < keypoints.length; i++) {
-//         const keypoint = keypoints[i];
-
-//         if (keypoint.score < minConfidence) {
-//             continue;
-//         }
-
-//         const { y, x } = keypoint.position;
-//         drawPoint(ctx, y * scale, x * scale, 15);
-//     }
-// }

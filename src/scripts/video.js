@@ -33,10 +33,6 @@ export const setupVideo = async () => {
     video.width = 700
     video.srcObject = stream;
 
-    // return new Promise(
-    //     (resolve) => (video.onloadedmetadata = () => {console.log('promise firing');resolve(video)})
-    // );
-
     return new Promise((resolve) => {
         video.onloadedmetadata = () => { 
             resolve(video);
